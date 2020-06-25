@@ -19,4 +19,65 @@ infrequent updates, and keeps the number of packages that would cause a "world r
 
 ## Maintainers
 
-* The Habitat Maintainers: <humans@habitat.sh>
+* The Core Planners: <chef-core-planners@chef.io>
+
+## Type of Package
+
+Binary package
+
+### Use as Dependency
+
+Binary packages can be set as runtime or build time dependencies. See [Defining your dependencies](https://www.habitat.sh/docs/developing-packages/developing-packages/#sts=Define%20Your%20Dependencies) for more information.
+
+To add core/python-minimal as a depdendency, you can add one of the following to your plan file.
+
+##### Buildtime Dependency
+
+> pkg_build_deps=(core/python-minimal)
+
+##### Runtime Depdendency
+
+> pkg_deps=(core/python-minimal)
+
+### Use as Tool
+
+#### Installation
+
+To install this plan, you should run the following commands to first install, and then link the binaries this plan creates.
+
+`hab pkg install core/python-minimal`
+
+> » Installing core/python-minimal
+
+> ☁ Determining latest version of core/python-minimal in the 'stable' channel
+
+> ☛ Verifying core/python-minimal/3.7.0/20200306003529
+
+> ...
+
+> ✓ Installed core/python-minimal/3.7.0/20200306003529
+
+> ★ Install of core/python-minimal/3.7.0/20200306003529 complete with 1 new packages installed.
+
+`hab pkg binlink core/python-minimal`
+
+> » Binlinking python3 from core/python-minimal into /bin
+
+> ★ Binlinked python3 from core/python-minimal/3.7.0/20200306003529 to /bin/python3
+
+> ...
+
+#### Using an example binary
+You can now use the binary as normal:
+
+`/bin/python3 --help` or `python3 --help`
+
+```
+usage: python3 [option] ... [-c cmd | -m mod | file | -] [arg] ...
+Options and arguments (and corresponding environment variables):
+-b     : issue warnings about str(bytes_instance), str(bytearray_instance)
+         and comparing bytes/bytearray with str. (-bb: issue errors)
+-B     : don't write .pyc files on import; also PYTHONDONTWRITEBYTECODE=x
+-c cmd : program passed in as string (terminates option list)
+...
+```
