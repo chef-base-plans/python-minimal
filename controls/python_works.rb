@@ -2,7 +2,6 @@ title 'Tests to confirm python-minimal works as expected'
 
 plan_name = input('plan_name', value: 'python-minimal')
 plan_ident = "#{ENV['HAB_ORIGIN']}/#{plan_name}"
-hab_path = input('hab_path', value: '/tmp/hab')
 
 control 'core-plans-python-minimal' do
   impact 1.0
@@ -18,7 +17,7 @@ control 'core-plans-python-minimal' do
     $ python -c "print(\'hello world\')"
     hello world
   '
-  python_pkg_ident = command("#{hab_path} pkg path #{plan_ident}")
+  python_pkg_ident = command("hab pkg path #{plan_ident}")
   describe python_pkg_ident do
     its('stdout') { should_not be_empty }
     its('exit_status') { should eq 0 }
@@ -47,7 +46,7 @@ control 'core-plans-binaries' do
   Then we run a version check to ensure the binary works and is of the correct version.
   '
 
-  hab_pkg_path = command("#{hab_path} pkg path #{plan_ident}")
+  hab_pkg_path = command("hab pkg path #{plan_ident}")
   describe hab_pkg_path do
     its('stdout') { should_not be_empty }
     its('exit_status') { should eq 0 }
