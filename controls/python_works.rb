@@ -65,13 +65,13 @@ control 'core-plans-binaries' do
     its('exit_status') { should eq 0 }
   end
 
-  describe file("#{hab_pkg_path}/bin/2to3-3.7") do
+  describe file("#{hab_pkg_path}/bin/2to3-3.10") do
     it { should exist }
     its('size') { should > 0 }
     it { should be_executable }
   end
 
-  describe command("#{hab_pkg_path}/bin/2to3-3.7 --help") do
+  describe command("#{hab_pkg_path}/bin/2to3-3.10 --help") do
     its('stdout') { should_not be_empty }
     its('stdout') { should match /Usage: 2to3/ }
     its('exit_status') { should eq 0 }
@@ -101,13 +101,13 @@ control 'core-plans-binaries' do
     its('exit_status') { should eq 0 }
   end
 
-  describe file("#{hab_pkg_path}/bin/pydoc3.7") do
+  describe file("#{hab_pkg_path}/bin/pydoc3.10") do
     it { should exist }
     its('size') { should > 0 }
     it { should be_executable }
   end
 
-  describe command("#{hab_pkg_path}/bin/pydoc3.7") do
+  describe command("#{hab_pkg_path}/bin/pydoc3.10") do
     its('stdout') { should_not be_empty }
     its('stdout') { should match /pydoc - the Python documentation tool/ }
     its('exit_status') { should eq 0 }
@@ -161,49 +161,49 @@ control 'core-plans-binaries' do
     its('exit_status') { should eq 1 }
   end
 
-  describe file("#{hab_pkg_path}/bin/python3.7") do
+  describe file("#{hab_pkg_path}/bin/python3.10") do
     it { should exist }
     its('size') { should > 0 }
     it { should be_executable }
   end
 
-  describe command("#{hab_pkg_path}/bin/python3.7 --version") do
+  describe command("#{hab_pkg_path}/bin/python3.10 --version") do
     its('stdout') { should_not be_empty }
     its('stdout') { should match /[0-9]+.[0-9]+.[0-9]+/ }
     its('exit_status') { should eq 0 }
   end
 
-  describe file("#{hab_pkg_path}/bin/python3.7-config") do
+  describe file("#{hab_pkg_path}/bin/python3.10-config") do
     it { should exist }
     its('size') { should > 0 }
     it { should be_executable }
   end
 
-  describe command("#{hab_pkg_path}/bin/python3.7-config --version") do
+  describe command("#{hab_pkg_path}/bin/python3.10-config --version") do
     its('stdout') { should_not be_empty }
     its('stdout') { should match /[0-9]+.[0-9]+.[0-9]+/ }
     its('exit_status') { should eq 1 }
   end
 
-  describe file("#{hab_pkg_path}/bin/python3.7m") do
+  describe file("#{hab_pkg_path}/bin/python3.10") do
     it { should exist }
     its('size') { should > 0 }
     it { should be_executable }
   end
 
-  describe command("#{hab_pkg_path}/bin/python3.7m --version") do
+  describe command("#{hab_pkg_path}/bin/python3.10 --version") do
     its('stdout') { should_not be_empty }
     its('stdout') { should match /[0-9]+.[0-9]+.[0-9]+/ }
     its('exit_status') { should eq 0 }
   end
 
-  describe file("#{hab_pkg_path}/bin/python3.7m-config") do
+  describe file("#{hab_pkg_path}/bin/python3.10-config") do
     it { should exist }
     its('size') { should > 0 }
     it { should be_executable }
   end
 
-  describe command("#{hab_pkg_path}/bin/python3.7m-config --version") do
+  describe command("#{hab_pkg_path}/bin/python3.10-config --version") do
     its('stdout') { should_not be_empty }
     its('stdout') { should match /[0-9]+.[0-9]+.[0-9]+/ }
     its('exit_status') { should eq 1 }
